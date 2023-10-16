@@ -2,8 +2,7 @@ import java.util.*;
 
 public class ValidaCPF{
 
-	//private long cpfLong;
-
+	//VERIFICA SE O CPF RECEBIDO É VÁLIDO
 	public static boolean isCPF(String cpf){
 
 		char d10; char d11;	
@@ -181,25 +180,62 @@ public class ValidaCPF{
 		return(true);
 
 	}
-	
-	/*public long isLong(String cpf){
 
+	//CONVERTE O CPF DE STRING PARA LONG
+	public static long isLong(String cpf){
+
+		long cpfLong = 0; int i;
+		String cpfDigitos = "";
+
+		//PRIMEIRO VERIFICA SE O CPF RECEBIDO É VÁLIDO UTILIZANDO O MÉTODO DE VALIDAÇÃO
 		if(isCPF(cpf)){
 
+			//CASO ENTRE APENAS COM OS DÍGITOS DO CPF CONVERTE PARA LONG USANDO O PARSE
+			if(cpf.length() == 11){
+
+				cpfLong = Long.parseLong(cpf);
+			
+			//CASO ENTRE COM OS DÍGITOS DE SEPARAÇÃO JOGA PARA UMA STRING SEM OS DÍGITOS E DEPOIS CONVERTE USANDO O PARSE
+			}else{
+				//126.914.127-92
+				//01234567890123
+				for(i = 0; i < 3; i++){
+					cpfDigitos = cpfDigitos + (String.valueOf(cpf.charAt(i)));
+				}
+				for(i = 4; i < 7; i++){
+					cpfDigitos = cpfDigitos + (String.valueOf(cpf.charAt(i)));
+				}
+				for(i = 8; i < 11; i++){
+					cpfDigitos = cpfDigitos + (String.valueOf(cpf.charAt(i)));
+				}
+				for(i = 12; i <= 13; i++){
+					cpfDigitos = cpfDigitos + (String.valueOf(cpf.charAt(i)));
+				}
+
+				cpfLong = Long.parseLong(cpfDigitos);
+
+			}
+
 		}
-
+		
 		return(cpfLong);
-	}*/
+		
+	}
 
+	//MÉTODO MAIN PARA DEBUG
 	public static void main(String args[]){
 
 		Scanner input = new Scanner(System.in);
 		String cpf;
+		long cpfLong;
 
 		System.out.print("Digite o CPF: ");
 		cpf = input.nextLine();
+		cpfLong = ValidaCPF.isLong(cpf);
 
-		System.out.println(isCPF(cpf));
+		System.out.println("\nCPF VÁLIDO: " + isCPF(cpf));
+		System.out.println("CPF LONG: " + cpfLong);
+
 		input.close();
 
 	}
