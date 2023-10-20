@@ -10,6 +10,7 @@ public class Pessoa{
 	private double peso;
 	private double altura;
 	private char genero;
+	private String cpf;
 	private static int contador = 0;
 
 	private Pessoa pai;
@@ -26,13 +27,18 @@ public class Pessoa{
 	//SOBRENOME
 	public void setSobrenome(String n){this.sobrenome = n;}
 	public String getSobrenome(){return this.sobrenome;}
-	
+
+	//CPF
+	public void setCpf(String c){this.cpf = c;}
+	public String getCpf(){return cpf;}
+
 	//PESO
 	public void setPeso(double n){
 		if(n > 0 && n < 300){
 			this.peso = n;
 		}else{System.out.println("Peso invalido");}
 	}
+	
 	public double getPeso(){return this.peso;}
 
 	//ALTURA
@@ -78,7 +84,7 @@ public class Pessoa{
 
 	//TO STRING
 	public String toString(){
-		return("\nNome: " + nome + "\nSobrenome: " + sobrenome + "\nData de Nascimento: " + dia + "/" + mes + "/" + ano + "\nAltura: " + altura + "\nPeso: " + peso + "\nGenero: " + genero);	
+		return("\nNome: " + nome + "\nSobrenome: " + sobrenome + "\nCPF: " + cpf + "\nData de Nascimento: " + dia + "/" + mes + "/" + ano + "\nAltura: " + altura + "\nPeso: " + peso + "\nGenero: " + genero);	
 	}
 
 	//MÉTODO CONSTRUTOR DA CLASSE
@@ -86,9 +92,10 @@ public class Pessoa{
 	public Pessoa(){
 	}
 
-	public Pessoa(String n, String s, double a, double p, char g, int dia, int mes, int ano){
+	public Pessoa(String n, String s, String c, double a, double p, char g, int dia, int mes, int ano){
 		setNome(n);
-		setSobrenome(s);	
+		setSobrenome(s);
+		setCpf(c);	
 		setDataNascimento(ano, mes, dia);
 		setAltura(a);
 		setPeso(p);
@@ -96,6 +103,13 @@ public class Pessoa{
 		setContador();
 		setMae(null);
 		setPai(null);
-	}	
+	}
+	
+	public static void main(String args[]){
+
+		Pessoa p1 = new Pessoa();
+		System.out.println(p1);
+	
+	}
 
 }

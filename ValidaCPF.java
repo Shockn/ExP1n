@@ -1,4 +1,4 @@
-import java.util.*;
+//import java.util.*;
 
 public class ValidaCPF{
 
@@ -223,7 +223,7 @@ public class ValidaCPF{
 	}
 
 	//MÉTODO MAIN PARA DEBUG
-	public static void main(String args[]){
+	/*public static void main(String args[]){
 
 		Scanner input = new Scanner(System.in);
 		String cpf;
@@ -238,6 +238,6 @@ public class ValidaCPF{
 
 		input.close();
 
-	}
+	}*/
 
 }
