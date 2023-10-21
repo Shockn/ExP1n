@@ -16,6 +16,7 @@ public class Pessoa{
 	private Pessoa pai;
 	private Pessoa mae;
 
+	private Scanner input = new Scanner(System.in);
 
 	//GETTERS AND SETTERS
 
@@ -29,7 +30,17 @@ public class Pessoa{
 	public String getSobrenome(){return this.sobrenome;}
 
 	//CPF
-	public void setCpf(String c){this.cpf = c;}
+	public void setCpf(String c){
+		
+		if(ValidaCPF.isCPF(c)){
+			this.cpf = c;
+		}else{
+			System.out.print("\nCPF inválido, digite novamente: ");
+			c = input.nextLine();
+			setCpf(c);
+		}
+
+	}
 	public String getCpf(){return cpf;}
 
 	//PESO
@@ -107,7 +118,10 @@ public class Pessoa{
 	
 	public static void main(String args[]){
 
-		Pessoa p1 = new Pessoa();
+		Pessoa p1 = new Pessoa("Yuri", "de Oliveira Costa", "126.91a-227 223", 1.67, 60, 'm', 28, 8, 2000);
+		System.out.println(p1);
+
+		p1.setCpf("12691412792");
 		System.out.println(p1);
 	
 	}
