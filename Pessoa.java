@@ -16,9 +16,14 @@ public class Pessoa{
 
 	//GETTERS AND SETTERS
 
-
 	//NOME
-	public void setNome(String n){this.nome = n;}
+	public void setNome(String n){
+		if(n.length() <= 1){
+			System.out.print("\nNome inválido, digite novamente: ");
+			n = input.nextLine();
+			setNome(n);
+		}else{this.nome = n;}	
+	}
 	public String getNome(){return this.nome;}
 	
 	//SOBRENOME
@@ -34,6 +39,7 @@ public class Pessoa{
 			System.out.print("\nCPF inválido, digite novamente: ");
 			c = input.nextLine();
 			setCpf(c);
+			input.nextLine();
 		}
 
 	}
@@ -103,10 +109,10 @@ public class Pessoa{
 	//MAIN
 	public static void main(String args[]){
 
-		Pessoa p1 = new Pessoa("Yuri", "de Oliveira Costa", 28, 8, 2000);
+		Pessoa p1 = new Pessoa("Y", "de Oliveira Costa", 28, 8, 2000);
 		System.out.println(p1);
 
-		p1.setPeso(9999);
+		//p1.setNome();
 		System.out.println(p1);
 	
 	}
