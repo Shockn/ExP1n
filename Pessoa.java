@@ -9,12 +9,8 @@ public class Pessoa{
 	private int dia, mes, ano;
 	private double peso;
 	private double altura;
-	private char genero;
 	private String cpf;
 	private static int contador = 0;
-
-	private Pessoa pai;
-	private Pessoa mae;
 
 	private Scanner input = new Scanner(System.in);
 
@@ -47,7 +43,11 @@ public class Pessoa{
 	public void setPeso(double n){
 		if(n > 0 && n < 300){
 			this.peso = n;
-		}else{System.out.println("Peso invalido");}
+		}else{
+			System.out.print("\nPeso inválido, digite novamente: ");
+			n = input.nextDouble();
+			setPeso(n);
+		}
 	}
 	
 	public double getPeso(){return this.peso;}
@@ -60,14 +60,6 @@ public class Pessoa{
 		}else{System.out.println("Altura invalido");}
 	}
 	public double getAltura(){return this.altura;}
-	
-	//GÊNERO
-	public void setGenero(char n){
-		if(n == 'm' || n == 'f'){
-			this.genero = n;
-		}else{System.out.println("Genero invalido(entre com m ou f)");}
-	}
-	public char getGenero(){return this.genero;}
 
 	//DATA DE NASCIMENTO
 	public void setDataNascimento(int d, int m, int a){
@@ -85,43 +77,36 @@ public class Pessoa{
 	}
 	public static int getContador(){return(contador);}
 
-	//MAE
-	public void setMae(Pessoa m){mae = m;}
-	public Pessoa getMae(){return(mae);}
-
-	//PAI
-	public void setPai(Pessoa p){pai = p;}
-	public Pessoa getPai(){return(pai);}
-
 	//TO STRING
 	public String toString(){
-		return("\nNome: " + nome + "\nSobrenome: " + sobrenome + "\nCPF: " + cpf + "\nData de Nascimento: " + dia + "/" + mes + "/" + ano + "\nAltura: " + altura + "\nPeso: " + peso + "\nGenero: " + genero);	
+		return("\nNome: " + nome + "\nSobrenome: " + sobrenome + "\nCPF: " + cpf + "\nData de Nascimento: " + dia + "/" + mes + "/" + ano + "\nAltura: " + altura + "cm\nPeso: " + peso + "kg");	
 	}
 
-	//MÉTODO CONSTRUTOR DA CLASSE
-	
-	public Pessoa(){
+	//MÉTODOS CONSTRUTORES DA CLASSE
+	public Pessoa(String n, String s, int dia, int mes, int ano){
+		setNome(n);
+		setSobrenome(s);
+		setDataNascimento(ano, mes, dia);
+		setContador();
 	}
 
-	public Pessoa(String n, String s, String c, double a, double p, char g, int dia, int mes, int ano){
+	public Pessoa(String n, String s, String c, double a, double p, int dia, int mes, int ano){
 		setNome(n);
 		setSobrenome(s);
 		setCpf(c);	
 		setDataNascimento(ano, mes, dia);
 		setAltura(a);
 		setPeso(p);
-		setGenero(g);
 		setContador();
-		setMae(null);
-		setPai(null);
 	}
 	
+	//MAIN
 	public static void main(String args[]){
 
-		Pessoa p1 = new Pessoa("Yuri", "de Oliveira Costa", "126.91a-227 223", 1.67, 60, 'm', 28, 8, 2000);
+		Pessoa p1 = new Pessoa("Yuri", "de Oliveira Costa", 28, 8, 2000);
 		System.out.println(p1);
 
-		p1.setCpf("12691412792");
+		p1.setPeso(9999);
 		System.out.println(p1);
 	
 	}
