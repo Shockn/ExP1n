@@ -122,8 +122,15 @@ public class Pessoa{
 	//MAIN
 	public static void main(String args[]){
 		
-		Pessoa p1 = new Pessoa("Yuri", "de Oliveira Costa", "12691412792", 28, 8, 2000);
-		System.out.println(p1);
+		//Pessoa p1 = new Pessoa("Yuri", "de Oliveira Costa", 28, 8, 2000);
+		//System.out.println(p1);
+
+		double a;
+		Scanner scan = new Scanner(System.in);
+		a = scan.nextDouble();
+		scan.close();
+		System.out.println(a);
+
 
 		/*if(p1.nome instanceof String){
 			System.out.println(p1.nome.getClass().getSimpleName() + " " + true);
