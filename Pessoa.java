@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Pessoa{
 
+	//VARIÁVEIS
 	private String nome;
 	private String sobrenome;
 	private GregorianCalendar dataNascimento;
@@ -18,16 +19,26 @@ public class Pessoa{
 
 	//NOME
 	public void setNome(String n){
+
 		if(n.length() <= 1){
 			System.out.print("\nNome inválido, digite novamente: ");
 			n = input.nextLine();
 			setNome(n);
-		}else{this.nome = n;}	
+		}else{this.nome = n;}
+
 	}
 	public String getNome(){return this.nome;}
 	
 	//SOBRENOME
-	public void setSobrenome(String n){this.sobrenome = n;}
+	public void setSobrenome(String n){
+		
+		if(n.length() <= 1){
+			System.out.print("\nSobrenome inválido, digite novamente: ");
+			n = input.nextLine();
+			setSobrenome(n);
+		}else{this.sobrenome = n;}
+
+	}
 	public String getSobrenome(){return this.sobrenome;}
 
 	//CPF
@@ -47,6 +58,7 @@ public class Pessoa{
 
 	//PESO
 	public void setPeso(double n){
+
 		if(n > 0 && n < 300){
 			this.peso = n;
 		}else{
@@ -54,6 +66,7 @@ public class Pessoa{
 			n = input.nextDouble();
 			setPeso(n);
 		}
+
 	}
 	
 	public double getPeso(){return this.peso;}
@@ -108,12 +121,15 @@ public class Pessoa{
 	
 	//MAIN
 	public static void main(String args[]){
-
-		Pessoa p1 = new Pessoa("Y", "de Oliveira Costa", 28, 8, 2000);
+		
+		Pessoa p1 = new Pessoa("Yuri", "de Oliveira Costa", "12691412792", 28, 8, 2000);
 		System.out.println(p1);
 
-		//p1.setNome();
-		System.out.println(p1);
+		/*if(p1.nome instanceof String){
+			System.out.println(p1.nome.getClass().getSimpleName() + " " + true);
+		}else{
+			System.out.println(p1.nome.getClass().getSimpleName() + " " + false);
+		}/* */
 	
 	}
 
