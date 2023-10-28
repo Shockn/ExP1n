@@ -5,9 +5,9 @@ public class Pessoa{
 	//VARIÁVEIS
 	private String nome;
 	private String sobrenome;
-	private GregorianCalendar dataNascimento;
+	private GregorianCalendar dataNascimento = new GregorianCalendar();
 
-	private int dia, mes, ano;
+	private int dia, mes, ano, idade;
 	private double peso;
 	private double altura;
 	private long cpf;
@@ -67,7 +67,6 @@ public class Pessoa{
 		}
 
 	}
-	
 	public double getPeso(){return this.peso;}
 
 	//ALTURA
@@ -84,61 +83,63 @@ public class Pessoa{
 	public double getAltura(){return this.altura;}
 
 	//DATA DE NASCIMENTO
-	public void setDataNascimento(int d, int m, int a){
-
-		GregorianCalendar data = new GregorianCalendar(d, m, a);
-		this.dataNascimento = data;
-
-		this.dia = dataNascimento.get(Calendar.DAY_OF_MONTH);
-		this.mes = dataNascimento.get(Calendar.MONTH);
-		this.ano = dataNascimento.get(Calendar.YEAR);
-
+	public void setDataNascimento(int a, int m, int d){
+		if(ValidaData.validData(d, m, a)){
+			this.dataNascimento = new GregorianCalendar(a, m, d);
+			this.dia = dataNascimento.get(Calendar.DAY_OF_MONTH);
+			this.mes = dataNascimento.get(Calendar.MONTH);
+			this.ano = dataNascimento.get(Calendar.YEAR);
+			this.idade = ValidaData.idade(d, m, a);
+		}else{
+			System.out.print("\nData inválida, digite o DIA novamente: ");
+			d = input.nextInt();
+			System.out.print("\nData inválida, digite o MÊS novamente: ");
+			m = input.nextInt();
+			System.out.print("\nData inválida, digite o ANO novamente: ");
+			a = input.nextInt();
+			setDataNascimento(a, m, d);
+		}
+		
 	}
 	public GregorianCalendar getDataNascimento(){return(this.dataNascimento);}
 
-	//CONTADOR
-	private void setNumPessoas(){
+	//CONTADOR DE INSTÂNCIAS
+	protected void setNumPessoas(){
 		contador++;
 	}
 	public static int numPessoas(){return(contador);}
 
 	//TO STRING
 	public String toString(){
-		return("\nNome: " + nome + "\nSobrenome: " + sobrenome + "\nCPF: " + cpf + "\nData de Nascimento: " + dia + "/" + mes + "/" + ano + "\nAltura: " + altura + "cm\nPeso: " + peso + "kg");	
+		return("\nNome: " + nome + "\nSobrenome: " + sobrenome + "\nCPF: " + cpf + "\nData de Nascimento: " + dia + "/" + mes + "/" + ano + " - Idade: " + idade + " anos" + "\nAltura: " + altura + "cm\nPeso: " + peso + "kg");	
 	}
 
 	//MÉTODOS CONSTRUTORES DA CLASSE
-	public Pessoa(String n, String s, int dia, int mes, int ano){
-		setNome(n);
-		setSobrenome(s);
+	public Pessoa(String nome, String sobrenome, int dia, int mes, int ano){
+		setNome(nome);
+		setSobrenome(sobrenome);
 		setDataNascimento(ano, mes, dia);
 		setNumPessoas();
 	}
 
-	public Pessoa(String n, String s, String c, double a, double p, int dia, int mes, int ano){
-		setNome(n);
-		setSobrenome(s);
-		setCpf(c);	
+	public Pessoa(String nome, String sobrenome, String cpf, double altura, double peso, int dia, int mes, int ano){
+		setNome(nome);
+		setSobrenome(sobrenome);
+		setCpf(cpf);	
 		setDataNascimento(ano, mes, dia);
-		setAltura(a);
-		setPeso(p);
+		setAltura(altura);
+		setPeso(peso);
 		setNumPessoas();
 	}
-	
-	//MAIN
-	public static void main(String args[]){
+
+	/*public static void main(String args[]){
 		
-		Pessoa p1 = new Pessoa("Yuri", "de Oliveira Costa", 28, 8, 2000);
-		p1.setCpf("12691412775");
-		p1.getDataNascimento();
+		Pessoa p1 = new Pessoa();
+		p1.setDataNascimento(2045, 8, 28);
+		System.out.println("DATA GC: " + p1.getDataNascimento());
 		System.out.println(p1);
 
-		/*if(p1.nome instanceof String){
-			System.out.println(p1.nome.getClass().getSimpleName() + " " + true);
-		}else{
-			System.out.println(p1.nome.getClass().getSimpleName() + " " + false);
-		}/* */
-	
-	}
+
+	}*/
 
 }

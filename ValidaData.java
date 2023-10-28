@@ -3,6 +3,8 @@ import java.util.*;
 public class ValidaData{
 
     private static GregorianCalendar dataAtual = new GregorianCalendar();
+    private static int dia = dataAtual.get(Calendar.DAY_OF_MONTH);
+    private static int mes = dataAtual.get(Calendar.MONTH) + 1;
     private static int ano = dataAtual.get(Calendar.YEAR);
 
     //MÉTODOS DE VALIDAÇÃO DO DIA
@@ -50,15 +52,40 @@ public class ValidaData{
     
     }
 
-    /*MAIN
-    public static void main(String args[]){
+    public static boolean validData(int dia, int mes, int ano){
 
-        int ano = 2024;
-        String anoS = "2024";
+        if(ValidaData.isDay(dia) && ValidaData.isMonth(mes) && ValidaData.isYear(ano)){
 
-        System.out.println(anoS.getClass().getSimpleName());
+            return(true);
+
+        }
+
+        return(false);
+
+    }
+
+    public static int idade(int d, int m, int a){
+
+        if(m < mes){
+            return((ano - a));
+        }else if(m == mes){
+
+            if(d > dia){
+                return((ano - a)-1);
+            }else{return(ano - a);}
+
+        }else{
+            return(ano - a)-1;
+        }
+
+    }
+
+    /*public static void main(String args[]){
+
+        System.out.println(ValidaData.dia);
+        System.out.println(ValidaData.mes);
+        System.out.println(ValidaData.ano);
 
     }*/
-
     
 }
