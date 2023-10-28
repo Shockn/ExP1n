@@ -27,7 +27,7 @@ public class ValidaData{
         return(true);
 
     }
-    public static boolean isMes(String mes){
+    public static boolean isMonth(String mes){
 
         int m = Integer.parseInt(mes);
         if(m < 1 || m > 12){return(false);}
@@ -36,13 +36,13 @@ public class ValidaData{
     }
 
     //MÉTODOS DE VALIDAÇÃO DO ANO
-    public static boolean isAno(int ano){
+    public static boolean isYear(int ano){
 
         if(ano < 1900 || ano > ValidaData.ano){return(false);}
         return(true);        
     
     }
-    public static boolean isAno(String ano){
+    public static boolean isYear(String ano){
 
         int a = Integer.parseInt(ano);
         if(a < 1900 || a > ValidaData.ano){return(false);}
