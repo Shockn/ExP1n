@@ -3,17 +3,17 @@ import java.util.*;
 public class Pessoa{
 
 	//VARIÁVEIS
-	private String nome;
-	private String sobrenome;
-	private GregorianCalendar dataNascimento = new GregorianCalendar();
+	protected String nome;
+	protected String sobrenome;
+	protected GregorianCalendar dataNascimento = new GregorianCalendar();
 
-	private int dia, mes, ano, idade;
-	private double peso;
-	private double altura;
-	private long cpf;
-	private static int contador = 0;
+	protected int dia, mes, ano, idade;
+	protected double peso;
+	protected double altura;
+	protected long cpf;
+	protected static int contador = 0;
 
-	private Scanner input = new Scanner(System.in);
+	protected Scanner input = new Scanner(System.in);
 
 	//GETTERS AND SETTERS
 
