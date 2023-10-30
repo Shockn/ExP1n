@@ -75,15 +75,13 @@ public class Pessoa{
 	public long getCpf(){return cpf;}
 
 	//PESO
-	public void setPeso(String n){
-		
-		double nDouble = Double.parseDouble(n);
+	public void setPeso(Double n){
 
-		if(nDouble > 0 && nDouble < 300){
-			this.peso = nDouble;
+		if(n > 0 && n < 300){
+			this.peso = n;
 		}else{
 			System.out.print("\nPeso inválido, digite novamente: ");
-			n = input.nextLine();
+			n = input.nextDouble();
 			setPeso(n);
 		}
 	
@@ -93,13 +91,20 @@ public class Pessoa{
 	//ALTURA
 	public void setAltura(double n){
 		
-		if(n > 1 && n < 3){
+		try{
+			if(n > 1 && n < 3){
 			this.altura = n;
-		}else{
+			}else{
+				System.out.print("\nAltura inválida, digite novamente: ");
+				n = input.nextDouble();
+				setAltura(n);
+			}
+		}catch(Exception e){
 			System.out.print("\nAltura inválida, digite novamente: ");
 			n = input.nextDouble();
 			setAltura(n);
 		}
+		
 	}
 	public double getAltura(){return this.altura;}
 
@@ -145,7 +150,7 @@ public class Pessoa{
 		setNumPessoas();
 	}
 
-	public Pessoa(String nome, String sobrenome, String cpf, int dia, int mes, int ano, double altura, String peso){
+	public Pessoa(String nome, String sobrenome, String cpf, int dia, int mes, int ano, double altura, Double peso){
 		setNome(nome);
 		setSobrenome(sobrenome);
 		setCpf(cpf);	

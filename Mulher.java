@@ -2,6 +2,7 @@ public class Mulher extends Pessoa{
     
 	//VARIÁVEL GÊNERO E O SETTER E GETTER
     private char genero;
+	protected static int contM;
 
     public void setGenero(char g){
 		String gen;
@@ -29,7 +30,7 @@ public class Mulher extends Pessoa{
 		setGenero(genero);
 	}
 
-	public Mulher(String nome, String sobrenome, char genero, int dia, int mes, int ano, String cpf, double altura, String peso){
+	public Mulher(String nome, String sobrenome, char genero, int dia, int mes, int ano, String cpf, double altura, double peso){
 		super(nome, sobrenome, cpf, dia, mes, ano, altura, peso);
 		setGenero(genero);
 	}

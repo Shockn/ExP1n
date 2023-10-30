@@ -13,7 +13,7 @@ public class P1nX {
                 System.out.println(p);
                 break;
             }else if(args[2].charAt(0) == 'm' || args[2].charAt(0) == 'M' && args.length == 9){
-                Homem p = new Homem(args[0], args[1], args[2].charAt(0), Integer.parseInt(args[3]), Integer.parseInt(args[4]), Integer.parseInt(args[5]), args[6], Double.parseDouble(args[7]), args[8]);
+                Homem p = new Homem(args[0], args[1], args[2].charAt(0), Integer.parseInt(args[3]), Integer.parseInt(args[4]), Integer.parseInt(args[5]), args[6], Double.parseDouble(args[7]), Double.parseDouble(args[8]));
                 System.out.println(p);
                 break;
             }else if(args[2].charAt(0) == 'f' || args[2].charAt(0) == 'F'  && args.length == 6){
@@ -21,7 +21,7 @@ public class P1nX {
                 System.out.println(p);
                 break;
             }else if(args[2].charAt(0) == 'f' || args[2].charAt(0) == 'F'  && args.length == 9){
-                Mulher p = new Mulher(args[0], args[1], args[2].charAt(0), Integer.parseInt(args[3]), Integer.parseInt(args[4]), Integer.parseInt(args[5]), args[6], Double.parseDouble(args[7]), args[8]);
+                Mulher p = new Mulher(args[0], args[1], args[2].charAt(0), Integer.parseInt(args[3]), Integer.parseInt(args[4]), Integer.parseInt(args[5]), args[6], Double.parseDouble(args[7]), Double.parseDouble(args[8]));
                 System.out.println(p);
                 break;
             }/*else{
@@ -69,7 +69,7 @@ public class P1nX {
                 gen = input.nextLine();
 
                 String nomeL; String sobrenomeL; String cpfL;
-                double alturaL; String pesoL; int diaL; int mesL; int anoL;
+                double alturaL; double pesoL; int diaL; int mesL; int anoL;
         
                 if(gen.substring(0).matches("m") || gen.substring(0).matches("M")){
                     
@@ -100,7 +100,7 @@ public class P1nX {
                     pessoas[i].setAltura(alturaL);
                     
                     System.out.print("\nDigite o peso: ");
-                    pesoL = input.nextLine();
+                    pesoL = input.nextDouble();
                     pessoas[i].setPeso(pesoL);
 
                     break;
@@ -134,12 +134,12 @@ public class P1nX {
                     pessoas[i].setAltura(alturaL);
 
                     System.out.print("\nDigite o peso: ");
-                    pesoL = input.nextLine();
+                    pesoL = input.nextDouble();
                     pessoas[i].setPeso(pesoL);
 
                     break;
                     
-                }else if(gen == " "){
+                }else if(gen == ""){
                     System.out.println("\nFinalizando inserção de elementos.");
                     break;
                 }
@@ -153,16 +153,21 @@ public class P1nX {
 
             for(Pessoa p: pessoas){
                 System.out.println(p);
-                if(p instanceof Homem){};
             }
 
-            System.out.println("\nNúmero de objetos criados no total (incluí por entrada por linha de comando): " + Pessoa.numPessoas());
-            System.out.print("Número de objetos da classe Homem criados: ");
-            System.out.print("\nNúmero de objetos da classe Mulher criados: ");
+            System.out.println("\nNúmero de objetos criados no total (incluí por entrada por linha de comando): " + pessoas.length);
+            for(int i = 0; i < pessoas.length; i++){
+                if(pessoas[i] instanceof Homem){
+                    Homem.contH++;
+                }else if(pessoas[i] instanceof Mulher){
+                    Mulher.contM++;
+                }
+            }
+            System.out.print("Número de objetos da classe Homem criados: " + Homem.contH);
+            System.out.print("\nNúmero de objetos da classe Mulher criados: " + Mulher.contM);
         
         }
         
-
         input.close();
         /*if(arrayNum == 0){
                     System.out.println("\nSem mais elementos a serem inseridos. Fim do programa.");
