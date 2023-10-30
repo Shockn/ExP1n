@@ -18,7 +18,7 @@ public class Homem extends Pessoa{
 
 	//TO STRING
 	public String toString(){
-		return("\nNome: " + nome + "\nSobrenome: " + sobrenome + "\nCPF: " + cpf + "\nGênero: Masculino" + "\nData de Nascimento: " + dia + "/" + mes + "/" + ano + " - Idade: " + idade + " anos" + "\nAltura: " + altura + "cm\nPeso: " + peso + "kg");	
+		return("\nNome: " + nome + "\nSobrenome: " + sobrenome + "\nGênero: Masculino" + "\nData de Nascimento: " + dia + "/" + mes + "/" + ano + " - Idade: " + idade + " anos" + "\nCPF: " + cpf + "\nAltura: " + altura + "cm\nPeso: " + peso + "kg");	
 	}
 
 	//CONSTRUTORES
@@ -27,7 +27,7 @@ public class Homem extends Pessoa{
 		setGenero(genero);
 	}
 
-	public Homem(String nome, String sobrenome, String cpf, char genero, double altura, double peso, int dia, int mes, int ano){
+	public Homem(String nome, String sobrenome,char genero, int dia, int mes, int ano, String cpf, double altura, double peso){
 		super(nome, sobrenome, cpf, altura, peso, dia, mes, ano);
 		setGenero(genero);
 	}
