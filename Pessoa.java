@@ -79,7 +79,7 @@ public class Pessoa{
 		
 		double nDouble = Double.parseDouble(n);
 
-		if((nDouble > 0 && nDouble < 300) && ){
+		if(nDouble > 0 && nDouble < 300){
 			this.peso = nDouble;
 		}else{
 			System.out.print("\nPeso inválido, digite novamente: ");

@@ -24,14 +24,14 @@ public class Homem extends Pessoa{
 	//CONSTRUTORES
 	public Homem(){}
 
-    public Homem(String nome, String sobrenome, char genero, int dia, int mes, int ano){
-		super(nome, sobrenome, dia, mes, ano);
-		setGenero(genero);
-	}
-
 	public Homem(String nome, String sobrenome,char genero, int dia, int mes, int ano, String cpf, double altura, String peso){
 		super(nome, sobrenome, cpf, dia, mes, ano, altura, peso);
 		setGenero(genero);
 	}
 
+    public Homem(String nome, String sobrenome, char genero, int dia, int mes, int ano){
+		super(nome, sobrenome, dia, mes, ano);
+		setGenero(genero);
+	}
+	
 }
