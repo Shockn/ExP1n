@@ -22,13 +22,15 @@ public class Mulher extends Pessoa{
 	}
 
 	//CONSTRUTORES
+	public Mulher(){super();};
+
     public Mulher(String nome, String sobrenome, char genero, int dia, int mes, int ano){
 		super(nome, sobrenome, dia, mes, ano);
 		setGenero(genero);
 	}
 
-	public Mulher(String nome, String sobrenome, char genero, int dia, int mes, int ano, String cpf, double altura, double peso){
-		super(nome, sobrenome, cpf, altura, peso, dia, mes, ano);
+	public Mulher(String nome, String sobrenome, char genero, int dia, int mes, int ano, String cpf, double altura, String peso){
+		super(nome, sobrenome, cpf, dia, mes, ano, altura, peso);
 		setGenero(genero);
 	}
 

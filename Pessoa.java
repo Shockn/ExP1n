@@ -20,6 +20,15 @@ public class Pessoa{
 	//NOME
 	public void setNome(String n){
 
+		char[] nChar = n.toCharArray();
+		for(char i: nChar){
+			if(Character.isDigit(i)){
+				System.out.print("\nNome inválido, digite novamente: ");
+				n = input.nextLine();
+				setNome(n);
+				break;
+			}
+		}
 		if(n.length() <= 1){
 			System.out.print("\nNome inválido, digite novamente: ");
 			n = input.nextLine();
@@ -31,8 +40,18 @@ public class Pessoa{
 	
 	//SOBRENOME
 	public void setSobrenome(String n){
+
+		char[] nChar = n.toCharArray();
+		for(char i: nChar){
+			if(Character.isDigit(i)){
+				System.out.print("\nNome inválido, digite novamente: ");
+				n = input.nextLine();
+				setSobrenome(n);
+				break;
+			}
+		}
 		
-		if(n.length() <= 1){
+		if(n.length() <= 1 || n.matches("[0-9]*")){
 			System.out.print("\nSobrenome inválido, digite novamente: ");
 			n = input.nextLine();
 			setSobrenome(n);
@@ -56,16 +75,18 @@ public class Pessoa{
 	public long getCpf(){return cpf;}
 
 	//PESO
-	public void setPeso(double n){
+	public void setPeso(String n){
+		
+		double nDouble = Double.parseDouble(n);
 
-		if(n > 0 && n < 300){
-			this.peso = n;
+		if((nDouble > 0 && nDouble < 300) && ){
+			this.peso = nDouble;
 		}else{
 			System.out.print("\nPeso inválido, digite novamente: ");
-			n = input.nextDouble();
+			n = input.nextLine();
 			setPeso(n);
 		}
-
+	
 	}
 	public double getPeso(){return this.peso;}
 
@@ -115,6 +136,8 @@ public class Pessoa{
 	}
 
 	//MÉTODOS CONSTRUTORES DA CLASSE
+	public Pessoa(){};
+
 	public Pessoa(String nome, String sobrenome, int dia, int mes, int ano){
 		setNome(nome);
 		setSobrenome(sobrenome);
@@ -122,7 +145,7 @@ public class Pessoa{
 		setNumPessoas();
 	}
 
-	public Pessoa(String nome, String sobrenome, String cpf, double altura, double peso, int dia, int mes, int ano){
+	public Pessoa(String nome, String sobrenome, String cpf, int dia, int mes, int ano, double altura, String peso){
 		setNome(nome);
 		setSobrenome(sobrenome);
 		setCpf(cpf);	
